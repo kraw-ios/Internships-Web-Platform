@@ -1,0 +1,102 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+
+<ul>
+    <li class="dropdown profile_details_drop">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            @if (User.IsInRole("Aluno"))
+            {
+                <div class="profile_img">
+                    <span class="prfil-img"><img src=@Url.Content("/Content/images/in4.jpg") alt=""> </span>
+                    <div class="user-name">
+                        <p>@User.Identity.GetUserName()</p>
+                        <span>Aluno</span>
+                    </div>
+                    <i class="fa fa-angle-down"></i>
+                    <i class="fa fa-angle-up"></i>
+                    <div class="clearfix"></div>
+
+                </div>
+            }
+            @if (User.IsInRole("Professor"))
+            {
+                <div class="profile_img">
+                    <span class="prfil-img"><img src=@Url.Content("/Content/images/in4.jpg") alt=""> </span>
+                    <div class="user-name">
+                        <p>@User.Identity.GetUserName()</p>
+                        <span>Professor</span>
+                    </div>
+                    <i class="fa fa-angle-down"></i>
+                    <i class="fa fa-angle-up"></i>
+                    <div class="clearfix"></div>
+
+                </div>
+            }
+            @if (User.IsInRole("Empresa"))
+            {
+                <div class="profile_img">
+                    <span class="prfil-img"><img src=@Url.Content("/Content/images/in4.jpg") alt=""> </span>
+                    <div class="user-name">
+                        <p>@User.Identity.GetUserName()</p>
+                        <span>Empresa</span>
+                    </div>
+                    <i class="fa fa-angle-down"></i>
+                    <i class="fa fa-angle-up"></i>
+                    <div class="clearfix"></div>
+
+                </div>
+            }
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="profile_img">
+                    <span class="prfil-img"><img src=@Url.Content("/Content/images/in4.jpg") alt=""> </span>
+                    <div class="user-name">
+                        <p>@User.Identity.GetUserName()</p>
+                        <span>Administrador</span>
+                    </div>
+                    <i class="fa fa-angle-down"></i>
+                    <i class="fa fa-angle-up"></i>
+                    <div class="clearfix"></div>
+
+                </div>
+            }
+        </a>
+        <ul class="dropdown-menu drp-mnu">
+            <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
+            <li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li>
+            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+            {
+                @Html.AntiForgeryToken()
+                <li> <a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out"></i> Logout</a> </li>
+        }
+        </ul>
+    </li>
+</ul>
+   // }
+}
+else
+{
+<ul>
+    <li class="dropdown profile_details_drop">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <div class="profile_img">
+                    <span class="prfil-img"><img src=@Url.Content("/Content/images/in4.jpg") alt=""> </span>
+                    <div class="user-name">
+                        <p>Convidado</p>
+                        <span>Geral</span>
+                    </div>
+                    <i class="fa fa-angle-down"></i>
+                    <i class="fa fa-angle-up"></i>
+                    <div class="clearfix"></div>
+
+                </div>
+        </a>
+        <ul class="dropdown-menu drp-mnu">
+            <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
+            <li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li>
+            <li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+        </ul>
+    </li>
+</ul>
+}
